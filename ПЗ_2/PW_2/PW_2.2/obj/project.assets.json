@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Уник\\Курс 2 #1\\Основи інформаційної безпеки\\Лабы\\ПЗ_2\\PW_2\\PW_2\\PW_2.1.csproj",
-      "projectName": "PW_2.1",
-      "projectPath": "D:\\Уник\\Курс 2 #1\\Основи інформаційної безпеки\\Лабы\\ПЗ_2\\PW_2\\PW_2\\PW_2.1.csproj",
+      "projectUniqueName": "D:\\Уник\\Курс 2 #1\\Основи інформаційної безпеки\\Лабы\\ПЗ_2\\PW_2\\PW_2.2\\PW_2.2.csproj",
+      "projectName": "PW_2.2",
+      "projectPath": "D:\\Уник\\Курс 2 #1\\Основи інформаційної безпеки\\Лабы\\ПЗ_2\\PW_2\\PW_2.2\\PW_2.2.csproj",
       "packagesPath": "C:\\Users\\Алексей\\.nuget\\packages\\",
-      "outputPath": "D:\\Уник\\Курс 2 #1\\Основи інформаційної безпеки\\Лабы\\ПЗ_2\\PW_2\\PW_2\\obj\\",
+      "outputPath": "D:\\Уник\\Курс 2 #1\\Основи інформаційної безпеки\\Лабы\\ПЗ_2\\PW_2\\PW_2.2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\VSP_C\\NuGetPackages"

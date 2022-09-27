@@ -1,0 +1,15 @@
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\bin\Debug\net6.0\PW_2.2.exe
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\bin\Debug\net6.0\PW_2.2.deps.json
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\bin\Debug\net6.0\PW_2.2.runtimeconfig.json
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\bin\Debug\net6.0\PW_2.2.dll
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\bin\Debug\net6.0\ref\PW_2.2.dll
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\bin\Debug\net6.0\PW_2.2.pdb
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\obj\Debug\net6.0\PW_2.2.csproj.AssemblyReference.cache
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\obj\Debug\net6.0\PW_2.2.GeneratedMSBuildEditorConfig.editorconfig
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\obj\Debug\net6.0\PW_2.2.AssemblyInfoInputs.cache
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\obj\Debug\net6.0\PW_2.2.AssemblyInfo.cs
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\obj\Debug\net6.0\PW_2.2.csproj.CoreCompileInputs.cache
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\obj\Debug\net6.0\PW_2.2.dll
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\obj\Debug\net6.0\ref\PW_2.2.dll
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\obj\Debug\net6.0\PW_2.2.pdb
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_2\PW_2\PW_2.2\obj\Debug\net6.0\PW_2.2.genruntimeconfig.cache
