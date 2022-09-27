@@ -15,15 +15,15 @@ string password = Console.ReadLine();
 byte[] btext = new byte[text.Length];
 btext = Encoding.UTF8.GetBytes(text);
 byte[] bpassword = Encoding.UTF8.GetBytes(password);
-byte[] bencmsg = new byte[btext.Length];
+byte[] bdecmsg = new byte[btext.Length];
 
 for (int i = 0, j = 0; i < btext.Length; i++)
 {
     if (j == bpassword.Length)
         j = 0;
-    byte bencmsgel = (byte)(btext[i] ^ bpassword[j]);
-    bencmsg[i] = bencmsgel;
+    byte bdecmsgel = (byte)(btext[i] ^ bpassword[j]);
+    bdecmsg[i] = bdecmsgel;
     j++;
 }
 
-Console.WriteLine("\nDecrypted message: " + Encoding.UTF8.GetString(bencmsg));
+Console.WriteLine("\nDecrypted message: " + Encoding.UTF8.GetString(bdecmsg));
