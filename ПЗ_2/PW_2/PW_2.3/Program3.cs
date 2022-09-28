@@ -7,66 +7,56 @@
 //using (StreamReader read = File.OpenText(pathenc))
 //    text = read.ReadToEnd();
 
-//byte[] btext = new byte[text.Length];
-//btext = Encoding.UTF8.GetBytes(text);
-//byte[] bdecmsg = new byte[btext.Length];
-//byte[] bpassword;
+////byte[] btext = new byte[text.Length];
+////btext = Encoding.UTF8.GetBytes(text);
+////byte[] bdecmsg = new byte[btext.Length];
+////byte[] bpassword;
 //string example = "Mit21";
-//byte[] bexample = Encoding.UTF8.GetBytes(example);
+////byte[] bexample = Encoding.UTF8.GetBytes(example);
+//string ftext = "";
+//string password;
 
 //while (true)
 //{
-//    bpassword = decrypting.GetPassword2();
+//    ftext = "";
+//    password = decrypting.GetPassword();
+//    Console.WriteLine("Password: " + password);
 
-//    for (int i = 0, j = 0; i < btext.Length; i++)
+//    for (int i = 0, j = 0; i < text.Length; i++)
 //    {
-//        if (j == bpassword.Length)
+//        if (j < 5)
 //            j = 0;
-//        byte bdecmsgel = (byte)(btext[i] ^ bpassword[j]);
-//        bdecmsg[i] = bdecmsgel;
+//        ftext += (char)(text[i] ^ password[j]);
 //        j++;
 //    }
-//    for (int i = 0; i < (btext.Length - 4); i++)
+//    Console.WriteLine("\nDecrypted message: " + ftext + "\n");  
+    
+//    for (int i = 0; i < (text.Length - 4); i++)
 //    {
-//        if (bdecmsg[i..(i+4)] == bexample)
+//        if (ftext[i..(i + 5)] == example)
 //        {
-//            Console.WriteLine("\nDecrypted message: " + Encoding.UTF8.GetString(bdecmsg) + "\n");
 //            Console.ReadKey();
 //        }
-            
+//        //Console.WriteLine(ftext[i..(i + 5)]);
 //    }
-    
+//    //Console.ReadKey();
 //}
 
 
 //class decrypting
 //{
-//    public static byte[] GetPassword()
+//    public static string GetPassword()
 //    {
-//        string password = "";
-//        Random rand = new Random();
-//        int randValue;
-//        char letter;
+//        var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+//        var stringChars = new char[5];
+//        var random = new Random();
+
 //        for (int i = 0; i < 5; i++)
 //        {
-//            randValue = rand.Next(0, 26);
-//            letter = Convert.ToChar(randValue + 65);
-//            password = password + letter;
+//            stringChars[i] = chars[random.Next(chars.Length)];
 //        }
-//        Console.WriteLine("Password:" + password);
-//        byte[] bpassword = Encoding.UTF8.GetBytes(password);
-//        return bpassword;
-//    }
-//    public static byte[] GetPassword2()
-//    {
-//        Random random = new Random();
-//        var rString = "";
-//        for (var i = 0; i < 5; i++)
-//        {
-//            rString += ((char)(random.Next(1, 26) + 64)).ToString().ToLower();
-//        }
-//        Console.WriteLine("Password:" + rString);
-//        byte[] bpassword = Encoding.UTF8.GetBytes(rString);
-//        return bpassword;
+
+//        var finalString = new String(stringChars); ;
+//        return finalString;
 //    }
 //}
