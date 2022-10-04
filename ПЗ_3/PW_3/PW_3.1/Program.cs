@@ -2,46 +2,124 @@
 using System.Text;
 using System.Security.Cryptography;
 
-const string strForHash1 = "Hello world!";
-const string strForHash2 = "KNU is the best!";
-const string strForHash3 = "Ukraine brave!";
+Console.WriteLine("Enter text: ");
+string strForHash = Console.ReadLine();
+var bstrForHash = Encoding.Unicode.GetBytes(strForHash);
 
-var md5ForStr1 = hash.ComputeHashMd5(Encoding.Unicode.GetBytes(strForHash1));
-var sha256ForStr2 = hash.ComputeHashSha256(Encoding.Unicode.GetBytes(strForHash2));
+var md5ForStr = hash.ComputeHash(bstrForHash, "md5", bstrForHash);
+Guid guid = new Guid(md5ForStr);
+Console.WriteLine("\nHash MD5: " + (Convert.ToBase64String(md5ForStr)));
+Console.WriteLine("GUID: " + guid + "\n");
 
-Guid guid1 = new Guid(md5ForStr1);
+var sha1ForStr = hash.ComputeHash(bstrForHash, "sha1", bstrForHash);
+Console.WriteLine("Hash SHA1: " + (Convert.ToBase64String(sha1ForStr)));
 
-hash.print_MD5(strForHash1, md5ForStr1, guid1);
-hash.print_SHA(strForHash1, sha256ForStr2);
+var sha256ForStr = hash.ComputeHash(bstrForHash, "sha256", bstrForHash);
+Console.WriteLine("Hash SHA256: " + (Convert.ToBase64String(sha256ForStr)));
+
+var sha384ForStr = hash.ComputeHash(bstrForHash, "sha384", bstrForHash);
+Console.WriteLine("Hash SHA384: " + (Convert.ToBase64String(sha384ForStr)));
+
+var sha512ForStr = hash.ComputeHash(bstrForHash, "sha512", bstrForHash);
+Console.WriteLine("Hash SHA512: " + (Convert.ToBase64String(sha512ForStr) + "\n"));
+
+Console.WriteLine("Enter key: ");
+string key = Console.ReadLine();
+var bkey = Encoding.Unicode.GetBytes(key);
+
+var md5hmacForStr = hash.ComputeHash(bstrForHash, "hmacmd5", bkey);
+Console.WriteLine("Hash MD5 HMAC: " + (Convert.ToBase64String(md5hmacForStr)));
+
+var sha1hmacForStr = hash.ComputeHash(bstrForHash, "hmacsha1", bkey);
+Console.WriteLine("Hash SHA1 HMAC: " + (Convert.ToBase64String(sha1hmacForStr)));
+
+var sha256hmacForStr = hash.ComputeHash(bstrForHash, "hmacsha256", bkey);
+Console.WriteLine("Hash SHA256 HMAC: " + (Convert.ToBase64String(sha256hmacForStr)));
+
+var sha384hmacForStr = hash.ComputeHash(bstrForHash, "hmacsha384", bkey);
+Console.WriteLine("Hash SHA384 HMAC: " + (Convert.ToBase64String(sha384hmacForStr)));
+
+var sha512hmacForStr = hash.ComputeHash(bstrForHash, "hmacsha512", bkey);
+Console.WriteLine("Hash SHA512 HMAC: " + (Convert.ToBase64String(sha512hmacForStr)));
+
+
 
 class hash
 {
-    public static byte[] ComputeHashMd5(byte[] dataForHash)
+    public static byte[] ComputeHash(byte[] toBeHashed, string metod, byte[] key)
     {
-        using (var md5 = MD5.Create())
+        switch (metod)
         {
-            return md5.ComputeHash(dataForHash);
+            case "md5":
+                using (var md5 = MD5.Create())
+                {
+                    return md5.ComputeHash(toBeHashed);
+                }
+                break;
+
+            case "sha1":
+                using (var sha1 = SHA1.Create())
+                {
+                    return sha1.ComputeHash(toBeHashed);
+                }
+                break;
+
+            case "sha256":
+                using (var sha256 = SHA256.Create())
+                {
+                    return sha256.ComputeHash(toBeHashed);
+                }
+                break;
+
+            case "sha384":
+                using (var sha384 = SHA384.Create())
+                {
+                    return sha384.ComputeHash(toBeHashed);
+                }
+                break;
+
+            case "sha512":
+                using (var sha512 = SHA512.Create())
+                {
+                    return sha512.ComputeHash(toBeHashed);
+                }
+                break;
+
+            case "hmacmd5":
+                using (var hmacmd5 = new HMACMD5(key))
+                {
+                    return hmacmd5.ComputeHash(toBeHashed);
+                }
+                break;
+
+            case "hmacsha1":
+                using (var hmacsha1 = new HMACSHA1(key))
+                {
+                    return hmacsha1.ComputeHash(toBeHashed);
+                }
+                break;
+
+            case "hmacsha256":
+                using (var hmacsha256 = new HMACSHA256(key))
+                {
+                    return hmacsha256.ComputeHash(toBeHashed);
+                }
+                break;
+
+            case "hmacsha384":
+                using (var hmacsha384 = new HMACSHA384(key))
+                {
+                    return hmacsha384.ComputeHash(toBeHashed);
+                }
+                break;
+
+            case "hmacsha512":
+                using (var hmacsha512 = new HMACSHA512(key))
+                {
+                    return hmacsha512.ComputeHash(toBeHashed);
+                }
+                break;
         }
-    }
-
-    public static void print_MD5(string strForHash, byte[] HashForStr, Guid guid)
-    {
-        Console.WriteLine("Str: " + strForHash);
-        Console.WriteLine("Hash MD5: " + (Convert.ToBase64String(HashForStr)));
-        Console.WriteLine("GUID: " + guid + "\n");
-    }
-
-    public static byte[] ComputeHashSha256(byte[] toBeHashed)
-    {
-        using (var sha256 = SHA256.Create())
-        {
-            return sha256.ComputeHash(toBeHashed);
-        }
-    }
-
-    public static void print_SHA(string strForHash, byte[] HashForStr)
-    {
-        Console.WriteLine("Str: " + strForHash);
-        Console.WriteLine("Hash SHA: " + (Convert.ToBase64String(HashForStr)) + "\n");
+        return toBeHashed;
     }
 }
