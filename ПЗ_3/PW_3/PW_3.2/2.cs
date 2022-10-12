@@ -19,7 +19,6 @@ for (int i = 0; i < 100000000; i++)
     string itrpassword = password;
     itrpassword = itrpassword + i.ToString();
     Console.WriteLine(itrpassword);
-    //string password = hash.rndPassword();
     byte[] bpassword = Encoding.Unicode.GetBytes(itrpassword);
     var tryhash = hash.ComputeHash(bpassword);
     string tryhashstr = Convert.ToBase64String(tryhash);
@@ -39,17 +38,5 @@ class hash
         {
             return md5.ComputeHash(toBeHashed);
         }
-    }
-    public static string rndPassword()
-    {
-        string password = "";
-        for (int i = 0; i < 8; i++)
-        {
-            Random rnd = new Random();
-            int num = rnd.Next(0, 9);
-            password = password + num.ToString();
-        }
-        Console.WriteLine(password);
-        return password;
     }
 }

@@ -21,7 +21,7 @@ var sha384ForStr = hash.ComputeHash(bstrForHash, "sha384");
 Console.WriteLine("Hash SHA384: " + (Convert.ToBase64String(sha384ForStr)));
 
 var sha512ForStr = hash.ComputeHash(bstrForHash, "sha512");
-Console.WriteLine("Hash SHA512: " + (Convert.ToBase64String(sha512ForStr) + "\n"));
+Console.WriteLine("Hash SHA512: " + (Convert.ToBase64String(sha512ForStr)));
 
 class hash
 {
