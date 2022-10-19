@@ -38,7 +38,7 @@ namespace PW_5._4
             int iter_step = 50000;
             int cnt = 0;
             byte[] salt;
-            int firstnum = iter_step * 20;
+            int firstnum = 10000 * 20;
 
             while (cnt != 10)
             {
