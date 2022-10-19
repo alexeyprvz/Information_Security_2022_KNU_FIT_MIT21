@@ -23,7 +23,7 @@ namespace PW_5._4
                 "\n -> ");
             int alg_chs = Convert.ToInt32(Console.ReadLine());
 
-            HashAlgorithmName alg;
+            HashAlgorithmName alg = HashAlgorithmName.SHA1;
             if (alg_chs == 1)
                 alg = HashAlgorithmName.MD5;
             if (alg_chs == 2)
@@ -38,17 +38,18 @@ namespace PW_5._4
             int iter_step = 50000;
             int cnt = 0;
             byte[] salt;
+            int firstnum = iter_step * 20;
 
-            while(cnt != 10)
+            while (cnt != 10)
             {
                 var sw = new Stopwatch();
                 salt = PBKDF2.GenerateSalt();
                 sw.Start();
-                string hashedPassword = Convert.ToBase64String(PBKDF2.HashPassword(Encoding.UTF8.GetBytes(password), salt,(cnt + 1) * iter_step, alg));
+                string hashedPassword = Convert.ToBase64String(PBKDF2.HashPassword(Encoding.UTF8.GetBytes(password), salt,firstnum + (cnt * iter_step), alg));
                 sw.Stop();
 
                 Console.WriteLine("Hashed password: " + hashedPassword + "    Salt: " + Convert.ToBase64String(salt) +
-                    "     Iterations: " + ((cnt + 1) * iter_step) + "    Time: " + sw.ElapsedMilliseconds);
+                    "     Iterations: " + (firstnum + (cnt * iter_step)) + "    Time: " + sw.ElapsedMilliseconds);
                 cnt++;
                 sw.Reset();
             }
