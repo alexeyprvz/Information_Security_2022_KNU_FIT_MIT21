@@ -1,0 +1,8 @@
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_5\PW_5\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_5\PW_5\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_5\PW_5\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_5\PW_5\ConsoleApp1\obj\Debug\PW_5.3.csproj.AssemblyReference.cache
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_5\PW_5\ConsoleApp1\obj\Debug\PW_5.3.csproj.SuggestedBindingRedirects.cache
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_5\PW_5\ConsoleApp1\obj\Debug\PW_5.3.csproj.CoreCompileInputs.cache
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_5\PW_5\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+D:\Уник\Курс 2 #1\Основи інформаційної безпеки\Лабы\ПЗ_5\PW_5\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
