@@ -18,7 +18,7 @@ namespace PW_5._4
             Console.Write("\n1 - MD5" +
                 "\n2 - SHA1" +
                 "\n3 - SHA256" +
-                "\n4 - SHA284" +
+                "\n4 - SHA384" +
                 "\n5 - SHA512" +
                 "\n -> ");
             int alg_chs = Convert.ToInt32(Console.ReadLine());
