@@ -35,7 +35,7 @@ namespace PW_6._1
 
             switch (sw)
             {
-                case '1':
+                case 1:
                     key = ENC_DEC.rndNum(8);
                     iv = ENC_DEC.rndNum(8);
 
@@ -46,7 +46,7 @@ namespace PW_6._1
                     Console.WriteLine("DES Decrypted: " + Encoding.UTF8.GetString(dec_message));
                     break;
 
-                case '2':
+                case 2:
                     key = ENC_DEC.rndNum(16);
                     iv = ENC_DEC.rndNum(8);
 
@@ -57,7 +57,7 @@ namespace PW_6._1
                     Console.WriteLine("TripleDES Decrypted: " + Encoding.UTF8.GetString(dec_message));
                     break;
 
-                case '3':
+                case 3:
                 default:
                     key = ENC_DEC.rndNum(32);
                     iv = ENC_DEC.rndNum(16);
@@ -119,15 +119,15 @@ namespace PW_6._1
         }
         public static byte[] DES_Encrypt(byte[] dataToEncrypt, byte[] key, byte[] iv)
         {
-            using (var aes = new DESCryptoServiceProvider())
+            using (var des = new DESCryptoServiceProvider())
             {
-                aes.Mode = CipherMode.CBC;
-                aes.Padding = PaddingMode.PKCS7;
-                aes.Key = key;
-                aes.IV = iv;
+                des.Mode = CipherMode.CBC;
+                des.Padding = PaddingMode.PKCS7;
+                des.Key = key;
+                des.IV = iv;
                 using (var memoryStream = new MemoryStream())
                 {
-                    var cryptoStream = new CryptoStream(memoryStream, aes.CreateEncryptor(), CryptoStreamMode.Write);
+                    var cryptoStream = new CryptoStream(memoryStream, des.CreateEncryptor(), CryptoStreamMode.Write);
                     cryptoStream.Write(dataToEncrypt, 0, dataToEncrypt.Length);
                     cryptoStream.FlushFinalBlock();
                     return memoryStream.ToArray();
@@ -136,15 +136,15 @@ namespace PW_6._1
         }
         public static byte[] DES_Decrypt(byte[] dataToDecrypt, byte[] key, byte[] iv)
         {
-            using (var aes = new DESCryptoServiceProvider())
+            using (var des = new DESCryptoServiceProvider())
             {
-                aes.Mode = CipherMode.CBC;
-                aes.Padding = PaddingMode.PKCS7;
-                aes.Key = key;
-                aes.IV = iv;
+                des.Mode = CipherMode.CBC;
+                des.Padding = PaddingMode.PKCS7;
+                des.Key = key;
+                des.IV = iv;
                 using (var memoryStream = new MemoryStream())
                 {
-                    var cryptoStream = new CryptoStream(memoryStream, aes.CreateDecryptor(), CryptoStreamMode.Write);
+                    var cryptoStream = new CryptoStream(memoryStream, des.CreateDecryptor(), CryptoStreamMode.Write);
                     cryptoStream.Write(dataToDecrypt, 0, dataToDecrypt.Length);
                     cryptoStream.FlushFinalBlock();
                     return memoryStream.ToArray();
@@ -153,15 +153,15 @@ namespace PW_6._1
         }
         public static byte[] TDES_Encrypt(byte[] dataToEncrypt, byte[] key, byte[] iv)
         {
-            using (var aes = new TripleDESCryptoServiceProvider())
+            using (var tdes = new TripleDESCryptoServiceProvider())
             {
-                aes.Mode = CipherMode.CBC;
-                aes.Padding = PaddingMode.PKCS7;
-                aes.Key = key;
-                aes.IV = iv;
+                tdes.Mode = CipherMode.CBC;
+                tdes.Padding = PaddingMode.PKCS7;
+                tdes.Key = key;
+                tdes.IV = iv;
                 using (var memoryStream = new MemoryStream())
                 {
-                    var cryptoStream = new CryptoStream(memoryStream, aes.CreateEncryptor(), CryptoStreamMode.Write);
+                    var cryptoStream = new CryptoStream(memoryStream, tdes.CreateEncryptor(), CryptoStreamMode.Write);
                     cryptoStream.Write(dataToEncrypt, 0, dataToEncrypt.Length);
                     cryptoStream.FlushFinalBlock();
                     return memoryStream.ToArray();
@@ -170,15 +170,15 @@ namespace PW_6._1
         }
         public static byte[] TDES_Decrypt(byte[] dataToDecrypt, byte[] key, byte[] iv)
         {
-            using (var aes = new TripleDESCryptoServiceProvider())
+            using (var tdes = new TripleDESCryptoServiceProvider())
             {
-                aes.Mode = CipherMode.CBC;
-                aes.Padding = PaddingMode.PKCS7;
-                aes.Key = key;
-                aes.IV = iv;
+                tdes.Mode = CipherMode.CBC;
+                tdes.Padding = PaddingMode.PKCS7;
+                tdes.Key = key;
+                tdes.IV = iv;
                 using (var memoryStream = new MemoryStream())
                 {
-                    var cryptoStream = new CryptoStream(memoryStream, aes.CreateDecryptor(), CryptoStreamMode.Write);
+                    var cryptoStream = new CryptoStream(memoryStream, tdes.CreateDecryptor(), CryptoStreamMode.Write);
                     cryptoStream.Write(dataToDecrypt, 0, dataToDecrypt.Length);
                     cryptoStream.FlushFinalBlock();
                     return memoryStream.ToArray();

@@ -21,7 +21,7 @@ namespace PW_6._2
             string path_iv = "..\\..\\..\\.\\files\\iv.txt";
             string path_enc_message = "..\\..\\..\\.\\files\\enc_message.txt";
 
-            byte[] enc_message = new byte[16];
+            byte[] enc_message;
             byte[] dec_message;
             byte[] key = new byte[32];
             byte[] iv = new byte[16];
@@ -92,10 +92,8 @@ namespace PW_6._2
                         read.Read(iv, 0, iv.Length);
                     }
 
-                    using (var read = new FileStream(path_enc_message, FileMode.Open))
-                    {
-                        read.Read(enc_message, 0, enc_message.Length);
-                    }
+                    enc_message = File.ReadAllBytes(path_enc_message);
+
                     Console.WriteLine("AES Encrypt: " + Convert.ToBase64String(enc_message));
 
                     dec_message = ENC_DEC.AES_Decrypt(enc_message, key, iv);
