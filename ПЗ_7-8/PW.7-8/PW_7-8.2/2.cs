@@ -70,13 +70,6 @@ namespace PW_7_8._2
                         var files = Directory.GetFiles(pathToXMLFolder);
                         if (files.Length != 0)
                         {
-                            Console.Write("Enter data to encrypt: ");
-                            original = Console.ReadLine();
-
-                            Console.Write("Write file name to encrypt (without extantion): ");
-                            txtFileName = Console.ReadLine();
-                            pathToEncMsgFile = pathToFolderEncMsgs + txtFileName + encMsg_ext;
-
                             Console.WriteLine("Public keys:");
                             for (int i = 0; i < files.Length; i++)
                             {
@@ -87,9 +80,16 @@ namespace PW_7_8._2
                             int num = Convert.ToInt32(Console.ReadLine());
                             pathToXMLFile = files[num - 1];
 
+                            Console.Write("\nEnter data to encrypt: ");
+                            original = Console.ReadLine();
+
+                            Console.Write("Write file name to encrypt (without file extension): ");
+                            txtFileName = Console.ReadLine();
+                            pathToEncMsgFile = pathToFolderEncMsgs + txtFileName + encMsg_ext;
+
                             ASYM_ENC.EncryptData(pathToXMLFile, Encoding.UTF8.GetBytes(original), pathToEncMsgFile);
 
-                            Console.WriteLine("DONE");
+                            Console.WriteLine("\nDONE");
                         }
                         else
                         {
