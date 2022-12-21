@@ -218,14 +218,17 @@ namespace PW_11_12
     {
         public static void OnlyForAdmins()
         {
+            // Перевірка того, що потік програми виконується автентифікованим користувачем із певними ролями
             if (Thread.CurrentPrincipal == null)
             {
                 throw new SecurityException("Thread.CurrentPrincipal cannot be null.");
             }
+            // Перевірка того, що автентифікований користувач належить до ролі "Admins"
             if (!Thread.CurrentPrincipal.IsInRole("admins"))
             {
                 throw new SecurityException("User must be a member of Admins to access these materials.");
             }
+            // У разі, якщо перевірка пройшла успішно, виконується захищена частина програми
             Console.WriteLine("You have access to all materials for Admins");
         }
         public static void OnlyForProgrammers()
