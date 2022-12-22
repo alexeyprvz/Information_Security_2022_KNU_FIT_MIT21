@@ -8,12 +8,14 @@ using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Threading;
 
-namespace PW_11_12
+namespace PW_13_14
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
             char start_choice;
             string login;
             string password;
@@ -32,6 +34,7 @@ namespace PW_11_12
             do
             {
                 Console.Clear();
+                logger.Info("Choose login or register or close programm");
                 Console.Write("l - Login\n" +
                     "r - register\n" +
                     "e - exit\n" +
@@ -44,18 +47,23 @@ namespace PW_11_12
                     {
                         Console.Clear();
                         Console.WriteLine("     #LOGIN#     \n");
+
+                        logger.Info("Enter login and password");
                         Console.Write("Enter login: ");
                         login = Console.ReadLine();
                         Console.Write("Enter password: ");
                         password = Console.ReadLine();
 
+                        logger.Info("Check username and password before LogIn");
                         if (!Protector.CheckPassword(login, password))
                         {
                             Console.ReadKey();
                             continue;
                         }
+                        logger.Trace("LogIn");
                         Protector.LogIn(login, password);
 
+                        logger.Info("Choose materials");
                         Console.Write("Access to materials:\n" +
                             "1 - for Admins\n" +
                             "2 - for Programmers\n" +
@@ -68,22 +76,24 @@ namespace PW_11_12
                     }
                     else
                     {
-                        Console.WriteLine("NO EXIST USERS TO LOGIN");
+                        logger.Warn("NO EXIST USERS TO LOGIN");
                         Console.ReadKey();
                     }
-                   
+
                 }
 
                 if (start_choice == 'r')
                 {
-                    ContinueRegistration:
+                ContinueRegistration:
                     Console.Clear();
                     Console.WriteLine("     #REGISTRATION#     \n");
+
+                    logger.Info("Enter login and password");
                     Console.Write("Enter login: ");
                     login = Console.ReadLine();
                     if (Protector.IfUserExist(login))
                     {
-                        Console.WriteLine("THIS USER ALREADY EXIST");
+                        logger.Warn("THIS USER ALREADY EXIST");
                         Console.Write("Do you want to login or continue registration?\n" +
                             "1 - exit and login with this username\n" +
                             "2 - continue registration\n" +
@@ -94,6 +104,8 @@ namespace PW_11_12
                     }
                     Console.Write("Enter password: ");
                     password = Console.ReadLine();
+
+                    logger.Info("Choose role");
                     Console.Write("Choose role:\n" +
                         "1 - Admins\n" +
                         "2 - Programmers\n" +
@@ -102,14 +114,16 @@ namespace PW_11_12
                         " -> ");
                     role_num = Convert.ToInt32(Console.ReadLine());
                     string[] role = { roles[role_num - 1] };
+
+                    logger.Info("Register");
                     Protector.Register(login, password, role);
-                    Console.WriteLine("REGISTRATION SUCCESSFUL");
+                    logger.Warn("REGISTRATION SUCCESSFUL");
                     Console.ReadKey();
                 }
 
                 if (start_choice == 'e')
                 {
-                    Console.WriteLine("\nEXIT");
+                    logger.Warn("\nEXIT");
                     break;
                 }
 
@@ -213,7 +227,7 @@ namespace PW_11_12
             return Users.ContainsKey(username);
         }
     }
-    
+
     public class CheckAccess
     {
         public static void OnlyForAdmins()
@@ -270,16 +284,20 @@ namespace PW_11_12
 
         public static void GetAccess(string opt)
         {
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+
             if (opt == "admins")
             {
                 try
                 {
+                    logger.Trace("Only for Admins");
                     OnlyForAdmins();
                     Console.ReadKey();
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+                    //Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+                    logger.Error(ex, "Getting access to materials for Admins failed");
                     Console.ReadKey();
                 }
             }
@@ -287,12 +305,14 @@ namespace PW_11_12
             {
                 try
                 {
+                    logger.Trace("Only for Programmers");
                     OnlyForProgrammers();
                     Console.ReadKey();
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+                    //Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+                    logger.Error(ex, "Getting access to materials for Programmers failed");
                     Console.ReadKey();
                 }
             }
@@ -300,12 +320,14 @@ namespace PW_11_12
             {
                 try
                 {
+                    logger.Trace("Only for Security Guards");
                     OnlyForSecurityGuards();
                     Console.ReadKey();
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+                    //Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+                    logger.Error(ex, "Getting access to materials for Security Guards failed");
                     Console.ReadKey();
                 }
             }
@@ -313,12 +335,14 @@ namespace PW_11_12
             {
                 try
                 {
+                    logger.Trace("Only for Accountants");
                     OnlyForAccountants();
                     Console.ReadKey();
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+                    //Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+                    logger.Error(ex, "Getting access to materials for Accountants failed");
                     Console.ReadKey();
                 }
             }
