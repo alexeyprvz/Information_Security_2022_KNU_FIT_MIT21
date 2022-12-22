@@ -71,7 +71,10 @@ namespace PW_13_14
                             "4 - for Accountants\n" +
                             " -> ");
                         check_access_num = Convert.ToInt32(Console.ReadLine());
+                        if (check_access_num != 1 && check_access_num != 2 && check_access_num != 3 && check_access_num != 4)
+                            logger.Fatal("WRONG ENTER");
                         check_access = roles[check_access_num - 1];
+                        logger.Debug($"Access to materials for {check_access}");
                         CheckAccess.GetAccess(check_access);
                     }
                     else
@@ -113,7 +116,10 @@ namespace PW_13_14
                         "4 - Accountants\n" +
                         " -> ");
                     role_num = Convert.ToInt32(Console.ReadLine());
+                    if (role_num != 1 && role_num != 2 && role_num != 3 && role_num != 4)
+                        logger.Fatal("WRONG ENTER");
                     string[] role = { roles[role_num - 1] };
+                    logger.Debug($"Login: {login}, Password: {password} Role: {role[0]}");
 
                     logger.Info("Register");
                     Protector.Register(login, password, role);
@@ -125,6 +131,12 @@ namespace PW_13_14
                 {
                     logger.Warn("\nEXIT");
                     break;
+                }
+
+                else
+                {
+                    logger.Fatal("WRONG ENTER TO START PROGRAMM");
+                    Console.ReadKey();
                 }
 
             } while (true);
@@ -183,10 +195,11 @@ namespace PW_13_14
         }
         public static bool CheckPassword(string username, string password)
         {
+            var logger = NLog.LogManager.GetCurrentClassLogger();
             //перевірка логіна у словнику
             if (!IfUserExist(username))
             {
-                Console.WriteLine("NO EXIST USERS WITH THIS LOGIN");
+                logger.Warn("NO EXIST USERS WITH THIS LOGIN");
                 return false;
             }
             var user = Users[username];
@@ -196,7 +209,7 @@ namespace PW_13_14
             //співставлення хешів  
             if (HashToCompare != user.PasswordHash)
             {
-                Console.WriteLine("WRONG PASSWORD");
+                logger.Warn("WRONG PASSWORD");
                 return (false);
             }
             return (true);
