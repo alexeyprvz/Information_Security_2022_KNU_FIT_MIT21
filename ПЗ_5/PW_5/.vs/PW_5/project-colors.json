@@ -15,7 +15,12 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Прочие файлы",
       "ColorIndex": -1
+    },
+    "262dd508-4503-489f-b985-0fd9741ef421": {
+      "ProjectGuid": "262dd508-4503-489f-b985-0fd9741ef421",
+      "DisplayName": "PW_5.5",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }
