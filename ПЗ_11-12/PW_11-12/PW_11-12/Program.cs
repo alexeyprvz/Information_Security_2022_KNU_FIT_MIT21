@@ -76,9 +76,9 @@ namespace PW_11_12
 
                 if (start_choice == 'r')
                 {
+                    ContinueRegistration:
                     Console.Clear();
                     Console.WriteLine("     #REGISTRATION#     \n");
-                    ContinueRegistration:
                     Console.Write("Enter login: ");
                     login = Console.ReadLine();
                     if (Protector.IfUserExist(login))
